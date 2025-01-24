@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Financiamento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <a href="#" class="voltar-link"  id="resetForm">← Fazer outra simulação</a>
+        <h1>Simulação de Financiamento</h1>
+        
+        <form id="formSimulacao">
+            <div class="simulacao-dados">
+              <div class="dado">
+                    <label for="precoVeiculoInput">Valor do Veículo</label>
+                    <input type="number" id="precoVeiculoInput" required>
+                </div>
+                <div class="dado">
+                    <label for="valorEntradaInput">Valor de Entrada</label>
+                    <input type="number" id="valorEntradaInput" required>
+                </div>
+                <div class="dado">
+                    <label for="taxaJurosInput">Taxa de Juros (mensal)</label>
+                    <input type="number" id="taxaJurosInput" step="0.01" required>
+                </div>
+                 <div class="dado">
+                    <label for="numeroParcelasInput">Número de Parcelas</label>
+                    <input type="number" id="numeroParcelasInput" required>
+                </div>
+                
+            </div>
+
+              <button type="button" onclick="calcularSimulacao()">Calcular</button>
+        </form>
+
+        <div class="resultado" style="display:none;" id="resultados">
+            <hr>
+            <h2>Resultado</h2>
+            <div class="compartilhar" style="display:none;" id="compartilhar">
+                <a href="https://wa.me/?text=Confira%20esta%20simula%C3%A7%C3%A3o" class="compartilhar-item" target="_blank">
+                  <img src="./imagens/whatsapp-icon.png" alt="WhatsApp">
+                </a>
+                <a href="javascript:navigator.share ? navigator.share({ title: 'Simulação de Financiamento', url: window.location.href, text: 'Confira esta simulação: ' }) : null" class="compartilhar-item">
+                     <img src="./imagens/share-icon.png" alt="Compartilhar">
+                  </a>
+               <a href="javascript:window.print();" class="compartilhar-item">
+                    <img src="./imagens/print-icon.png" alt="Imprimir">
+                </a>
+                 <a href="#" class="compartilhar-item" download="simulacao.pdf" onclick="gerarPDF(event)"  target="_blank">
+                   <img src="./imagens/download-icon.png" alt="Download">
+                </a>
+            </div>
+            <div class="dados-simulacao">Dados da Simulação</div>
+        
+            <table class="resultado-tabela">
+                <tr>
+                   <td>Valor do Veículo</td>
+                    <td class="valor">R$ <span id="precoVeiculoResult"></span></td>
+                </tr>
+                <tr>
+                    <td>Valor Entrada</td>
+                    <td class="valor">R$ <span id="valorEntradaResult"></span></td>
+                </tr>
+                <tr>
+                    <td>Valor Financiado</td>
+                    <td class="valor">R$ <span id="valorFinanciamento"></span></td>
+                </tr>
+                 <tr>
+                    <td>Número de Parcelas</td>
+                    <td class="valor"> <span id="numeroParcelasResult"></span></td>
+                </tr>
+                  <tr>
+                    <td>Valor da Parcela</td>
+                     <td class="valor">R$ <span id="valorParcela"></span></td>
+                </tr>
+                <tr>
+                    <td>Valor Financiado (com juros)</td>
+                    <td class="valor">R$ <span id="valorTotalFinanciamento"></span></td>
+                </tr>
+                <tr>
+                    <td>Custo Total do Veículo</td>
+                     <td class="valor">R$ <span id="custoTotalVeiculo"></span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="footer-container">
+        <footer class="footer" id="footer" >
+            <p class="footer">© 2025 - Desenvolvido por <a href="https://www.linkedin.com/in/cabraldasilvac/" target="_blank">WMS - Consultoria e Desenvolvimento</a></p>
+        </footer>
+    </div>
+    
+    <script src="calcula.js"></script>
+</body>
+</html>
